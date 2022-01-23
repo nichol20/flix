@@ -29,9 +29,7 @@ const setRandomNumber = {
     return randomNumber
   },
 
-  withinALimit(){
-    const max = 5000
-    const min = 1
+  withinALimit(min, max){
     const randomNumber = Math.floor(Math.random() * (max - min) + min)
 
     return randomNumber
@@ -50,7 +48,7 @@ async function getMovie(){
     LoadingScreen.startLoadingScreen()
 
     //const randomNumber = await setRandomNumber.withLastId()
-    const randomNumber = setRandomNumber.withinALimit()
+    const randomNumber = setRandomNumber.withinALimit(1, 5000)
 
     const response = await fetch(`${BASE_URL}${randomNumber}?${API_KEY}&${language}`)
     const data = await response.json()
